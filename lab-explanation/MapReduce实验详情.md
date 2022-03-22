@@ -2,7 +2,26 @@
 
 本文将讲解`MIT`分布式系统课程`6.824`的第一个`Lab`(mapreduce)的实验。
 
-## 理论篇
+## 准备工作
+
+在做实验之前，需要对`mapreduce`有所了解。事实上，`mapreduce` 就是在多台机器上并行处理数据，最后将处理后的数据汇总，输出成结果，就干了这么一件事。
+
+看[论文](https://pdos.csail.mit.edu/6.824/papers/mapreduce.pdf)的话，重点看第2、第3章就行，了解允许的基本原理。
+
+### 学习资料
+
+建议做实验前，应该先了解mapreduce的理论基础，他的论文应该多读几遍，然后看看他的实验说明。
+
+- **[【MIT 6.824 Distributed Systems Spring 2020 分布式系统 中文翻译版合集】](https://www.bilibili.com/video/BV1x7411M7Sf?p=1)**，B站上的MIT 6.824 课程，翻译得非常好
+- **[课程表](https://pdos.csail.mit.edu/6.824/schedule.html)**，MIT 6.824 的课程表
+- [**MIT 官方实验说明**](https://pdos.csail.mit.edu/6.824/labs/lab-mr.html)，MapReduce的实验说明
+- [**mapreduce原文**](https://pdos.csail.mit.edu/6.824/papers/mapreduce.pdf)，MapReduce的论文原文
+- [**mapreduce论文翻译**](https://zhuanlan.zhihu.com/p/141657364)，MapReduce的论文中文翻译
+- [**6.824 Lab1 MapReduce 中文翻译**](https://blog.buckbit.top/2021/04/15/labs-6824-mapreduce-translate)，MapReduce的实验说明的中文翻译
+
+磨刀不费砍柴功，当了解了上述的资料后，胸有成竹，下笔如有神。
+
+### MapReduce理论基础
 
 这是2020年的分布式系统的实验。
 
@@ -10,11 +29,9 @@
 
 ![](https://cdn.jsdelivr.net/gh/CcoWzh/CDNimage/mapreduce/mapreduce架构.png)
 
-
-
 ## 实验篇
 
-### 1. 要求
+### 1. 任务要求
 
 您的工作是实现一个分布式MapReduce，它由两个程序（coordinator 和worker程序）组成。 只有一个 coordinator 程序进程，一个或多个worker进程并行执行。 在真实的系统中，工作人员将在一堆不同的机器上运行，但是对于本实验，您将全部在单个机器上运行。 workers 将通过 RPC 与coordinator 通信。 每个worker 进程都会向 coordinator 询问任务，从一个或多个文件读取任务的输入，执行任务，并将任务的输出写入一个或多个文件。 coordinator 应注意 worker是否在合理的时间内是否完成其任务（在本实验中，使用10秒），并将同一任务交给另一位不同的worker。
 
@@ -150,7 +167,9 @@ type TaskStat struct {
 - worker通知master，如果是map任务完成，则master将map任务移除
 - 利用unix，开启端口监听，用于进程间通信
 
-## 4. 测试脚本
+## 测试
+
+
 
 
 
@@ -196,27 +215,3 @@ chui@cchui-virtual-machine:~$ timeout --help
 
 - 没有对输入的文件数据进行数据分割，而是直接一个`file`文件一个`map`任务
 
-
-
-
-
-
-
-
-
-
-
-## 学习资料
-
-- **[【MIT 6.824 Distributed Systems Spring 2020 分布式系统 中文翻译版合集】](https://www.bilibili.com/video/BV1x7411M7Sf?p=1)**
-- **[课程表](https://pdos.csail.mit.edu/6.824/schedule.html)**
-
-- **[课程的实验说明](https://pdos.csail.mit.edu/6.824/labs/lab-raft.html)**
-
-- [**MIT 官方实验说明**](https://pdos.csail.mit.edu/6.824/labs/lab-mr.html)
-
-- [**mapreduce论文翻译**](https://zhuanlan.zhihu.com/p/141657364)
-
-- [**mapreduce原文**]([https://pdos.csail.mit.edu/6.824/papers/mapreduce.pdf)
-
-- [**6.824 Lab1 MapReduce 中文翻译**](https://blog.buckbit.top/2021/04/15/labs-6824-mapreduce-translate)
