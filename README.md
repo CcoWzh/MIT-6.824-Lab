@@ -40,7 +40,7 @@ mr           ## mapreduce的主程序
 mrapps       ## 写好的map、reduce函数，用于测试
 ```
 
-具体的解释，参考[MapReduce实验详情](../MapReduce实验详情.md)
+具体的解释，参考[MapReduce实验详情](https://github.com/CcoWzh/MIT-6.824-Lab/blob/main/lab-explanation/MapReduce实验详情.md)
 
 ### 实验2：Raft
 
@@ -48,7 +48,7 @@ mrapps       ## 写好的map、reduce函数，用于测试
 
 ### xxx待更新
 
-xxx
+
 
 
 
